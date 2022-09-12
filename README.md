@@ -2,8 +2,9 @@
 
 Team:
 
-* Person 1 - Which microservice?
-* Person 2 - Which microservice?
+* Qingying Meng - Automobile Service
+* Carmen Tang - Auto Sales
+* Both - Inventory
 
 ## Design
 
