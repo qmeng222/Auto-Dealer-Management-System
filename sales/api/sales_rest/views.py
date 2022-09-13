@@ -1,7 +1,7 @@
 from enum import auto
 from django.shortcuts import render
 from django.http import JsonResponse
-from .encoders import AutomobileVOEncoder, SalesPersonEncoder, CustomerEncoder, SalesRecordEncoder
+from .encoders import SalesPersonEncoder, CustomerEncoder, SalesRecordEncoder
 from .models import AutomobileVO, SalesPerson, Customer, SalesRecord
 from django.views.decorators.http import require_http_methods
 import json
@@ -84,16 +84,16 @@ def list_sales(request, salesperson_id=None):
         try:
             content = json.loads(request.body)
 
-            vin_check = content["automobile"]
-            automobile= AutomobileVO.objects.get(vin=vin_check)
+            # vin_check = content["automobile"]
+            automobile= AutomobileVO.objects.get(vin=content["automobile"])
             content["automobile"] = automobile
 
-            customer_id=content["customer"]
-            customer = Customer.objects.get(id=customer_id)
+            # customer_id=content["customer"]
+            customer = Customer.objects.get(id=content["customer"])
             content["customer"] = customer
 
-            salesperson_id = content["sales_person"]
-            sales_person = SalesPerson.objects.get(id=salesperson_id)
+            # salesperson_id = content["sales_person"]
+            sales_person = SalesPerson.objects.get(id=content["sales_person"])
             content["sales_person"] = sales_person
 
             sales = SalesRecord.objects.create(**content)
@@ -107,50 +107,6 @@ def list_sales(request, salesperson_id=None):
                 {"message": "Could not create the sales record"},
                 status=400,
             )
-
-        # content = json.loads(request.body)
-        # print(content, "line 84")
-        # if (
-        #     "automobile" in content
-        #     and "sales_person" in content
-        #     and "customer" in content
-        #     and "price" in content
-        # ):
-        #     try: 
-        #         vin_check = content["automobile"]
-        #         automobile = AutomobileVO.objects.get(vin = vin_check)
-        #         content["automobile"] = automobile
-        #     except AutomobileVO.DoesNotExist:
-        #         return JsonResponse(
-        #             {"message": "Automobile does not exist"}
-        #         )
-            
-        #     try:
-        #         customer_id = content["customer"]
-        #         customer = Customer.objects.get(id = customer_id)
-        #         content["customer"] = customer
-        #     except Customer.DoesNotExist:
-        #         return JsonResponse(
-        #             {"message": "Customer does not exist"}
-        #         )
-
-        #     try:
-        #         salesperson = content["sales_person"]
-        #         sales_person = SalesPerson.objects.get(id = salesperson)
-        #         content["sales_person"] = sales_person
-        #     except SalesPerson.DoesNotExist:
-        #         return JsonResponse(
-        #             {"message": "Salesperson does not exist"}
-        #         )
-        # else: # POST
-        #     sales = SalesRecord.objects.create(**content)
-        #     print(sales, "line 120")
-        #     return JsonResponse(
-        #         sales,
-        #         encoder =  SalesRecordEncoder,
-        #         safe = False,
-        #     )
-
 
 
 @require_http_methods(["GET"])

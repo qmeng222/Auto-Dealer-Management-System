@@ -17,7 +17,6 @@ def get_automobiles():
     response = requests.get("http://inventory-api:8000/api/automobiles/")
     content = json.loads(response.content)
     for automobile in content["autos"]:
-        print(automobile, "checking loop for get_automobile")
         AutomobileVO.objects.update_or_create(
             vin = automobile["vin"],
             defaults = {
@@ -31,7 +30,6 @@ def poll():
     while True:
         print('Sales poller polling for data')
         try:
-            print("Testing poller get_automobiles??")
             # Write your polling logic, here
             get_automobiles()
         except Exception as e:
