@@ -1,3 +1,4 @@
+from enum import auto
 from django.shortcuts import render
 from django.http import JsonResponse
 from .encoders import AutomobileVOEncoder, SalesPersonEncoder, CustomerEncoder, SalesRecordEncoder
@@ -67,9 +68,14 @@ def show_customer(request, pk):
 
 
 @require_http_methods(["GET", "POST"])
-def list_sales(request):
+def list_sales(request, salesperson_id=None):
     if request.method == "GET":
-        sales = SalesRecord.objects.all()
+        if salesperson_id is not None:
+            sales = SalesRecord.objects.filter(sales_person = salesperson_id)
+            print(sales, "line 75")
+        else:
+            sales = SalesRecord.objects.all()
+            print(sales, "sales up top")
         return JsonResponse(
             {"sales": sales},
             encoder = SalesRecordEncoder,
@@ -78,29 +84,73 @@ def list_sales(request):
         try:
             content = json.loads(request.body)
 
-            vin = content["automobile"]
-            automobile = AutomobileVO.objects.get(vin=vin)
+            vin_check = content["automobile"]
+            automobile= AutomobileVO.objects.get(vin=vin_check)
             content["automobile"] = automobile
 
-            customer = content["specific_customer"]
-            specific_customer = CustomerEncoder.objects.get(id=customer)
-            content["customer"] = specific_customer
+            customer_id=content["customer"]
+            customer = Customer.objects.get(id=customer_id)
+            content["customer"] = customer
 
-            salesperson = content["sales_person"]
-            sales_person = SalesPerson.objects.get(id = salesperson)
+            salesperson_id = content["sales_person"]
+            sales_person = SalesPerson.objects.get(id=salesperson_id)
             content["sales_person"] = sales_person
 
             sales = SalesRecord.objects.create(**content)
             return JsonResponse(
                 sales,
-                encoder =  SalesRecordEncoder,
-                safe = False,
+                encoder=SalesRecordEncoder,
+                safe=False,
             )
         except AutomobileVO.DoesNotExist:
             return JsonResponse(
-                {"message": "Could not find Automobile"},
-                status = 400,
+                {"message": "Could not create the sales record"},
+                status=400,
             )
+
+        # content = json.loads(request.body)
+        # print(content, "line 84")
+        # if (
+        #     "automobile" in content
+        #     and "sales_person" in content
+        #     and "customer" in content
+        #     and "price" in content
+        # ):
+        #     try: 
+        #         vin_check = content["automobile"]
+        #         automobile = AutomobileVO.objects.get(vin = vin_check)
+        #         content["automobile"] = automobile
+        #     except AutomobileVO.DoesNotExist:
+        #         return JsonResponse(
+        #             {"message": "Automobile does not exist"}
+        #         )
+            
+        #     try:
+        #         customer_id = content["customer"]
+        #         customer = Customer.objects.get(id = customer_id)
+        #         content["customer"] = customer
+        #     except Customer.DoesNotExist:
+        #         return JsonResponse(
+        #             {"message": "Customer does not exist"}
+        #         )
+
+        #     try:
+        #         salesperson = content["sales_person"]
+        #         sales_person = SalesPerson.objects.get(id = salesperson)
+        #         content["sales_person"] = sales_person
+        #     except SalesPerson.DoesNotExist:
+        #         return JsonResponse(
+        #             {"message": "Salesperson does not exist"}
+        #         )
+        # else: # POST
+        #     sales = SalesRecord.objects.create(**content)
+        #     print(sales, "line 120")
+        #     return JsonResponse(
+        #         sales,
+        #         encoder =  SalesRecordEncoder,
+        #         safe = False,
+        #     )
+
 
 
 @require_http_methods(["GET"])
