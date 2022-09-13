@@ -2,16 +2,18 @@
 
 Team:
 
-* Qingying Meng - Automobile Service
-* Carmen Tang - Auto Sales
-* Both - Inventory
+- Qingying Meng - Automobile Service
+- Carmen Tang - Auto Sales
+- Both - Inventory
 
 ## Design
 
-## Service microservice
+- inventory API: 8000
+- browser/Insomnia: 8100
+- services microservice: 8080
+- sales microservice: 8090
 
-Explain your models and integration with the inventory
-microservice, here.
+## Service microservice
 
 ## Sales microservice
 
