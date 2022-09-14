@@ -154,63 +154,50 @@ def api_list_appointments(request):
             )
 
 
-        # try:
-        #     print("预约详情：", content)
-        #     vin = content["vin"]
-        #     customer_name = content["customer_name"]
-        #     date = content["date"]
-        #     time = content["time"]
-        #     # technician_name = content["technician_name"]
-        #     technician_name = Technician.objects.get(technician_name=content["technician_name"])
-        #     content["technician_name"]  = technician_name
-        #     reason = content["reason"]
-        #     appointment = Appointment.objects.create(**content)
-        #     return JsonResponse(
-        #         appointment,
-        #         encoder=AppointmentEncoder,
-        #         safe=False,
-        #     )
-        # except AutomobileVO.DoesNotExist:
-        #     return JsonResponse(
-        #         {"message": "could not create the appointment"},
-        #         status=400,
-        #     )
-
-
 @require_http_methods(["GET", "PUT", "DELETE"])
 def api_show_appointment(request, pk):
-    appointment = Appointment.objects.get(id=pk)
     if request.method == "GET":
-        return JsonResponse(
-            appointment,
-            encoder=AppointmentEncoder,
-            safe=False
-        )
-
-    elif request.method == "DELETE":
-        count, _ = Appointment.objects.filter(pk=pk).delete()
-        return JsonResponse(
-            {"deleted": count > 0}
-        )
-
-    else: # PUT
-        content = json.loads(request.body)
-        print("预约详情：", content)
         try:
-            appointment = Appointment.objects.get(id=content["vin"])
-            content["vin"] = bin
-
-            props = ["owner", "date", "finished", "canceled", "vip"]
-            for prop in props:
-                if prop in content:
-                    setattr(appointment, prop, content[prop])
-            appointment.save()
+            print("hi")
+            appointment = Appointment.objects.get(id=pk)
+            print("关注点关注点关注点:", appointment)
             return JsonResponse(
                 appointment,
+                encoder=AppointmentEncoder,
+                safe=False
+            )
+        except Appointment.DoesNotExist:
+            response = JsonResponse({"message": "Does not exist"})
+            response.status_code = 404
+            return response
+
+    elif request.method == "DELETE":
+        try:
+            model = Appointment.objects.get(id=pk)
+            model.delete()
+            return JsonResponse(
+                model,
                 encoder=AppointmentEncoder,
                 safe=False,
             )
         except Appointment.DoesNotExist:
-            response = JsonResponse({"message": "appointment does not exist"})
+            return JsonResponse({"message": "Does not exist"})
+
+    else: # "PUT"
+        try:
+            content = json.loads(request.body)
+            model = Appointment.objects.get(id=pk)
+            props = ["date", "time", "technician_id", "reason"]
+            for prop in props:
+                if prop in content:
+                    setattr(model, prop, content[prop])
+            model.save()
+            return JsonResponse(
+                model,
+                encoder=AppointmentEncoder,
+                safe=False,
+            )
+        except Appointment.DoesNotExist:
+            response = JsonResponse({"message": "Does not exist"})
             response.status_code = 404
             return response
