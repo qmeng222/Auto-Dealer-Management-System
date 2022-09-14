@@ -18,7 +18,7 @@ class CustomerEncoder(ModelEncoder):
 
 class SalesRecordEncoder(ModelEncoder):
     model = SalesRecord
-    properties = ["automobile", "sales_person", "customer", "price"]
+    properties = ["automobile", "sales_person", "customer", "price", "id"]
     encoders = {
         "automobile": AutomobileVOEncoder(),
         "sales_person": SalesPersonEncoder(),

@@ -10,6 +10,15 @@ function Nav() {
         </button>
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+            <li className="nav-item">
+                <NavLink className="nav-link" aria-current="page" to="/salespersons/new">New Salesperson</NavLink>
+            </li>
+            <li className="nav-item">
+                <NavLink className="nav-link" aria-current="page" to="/customers/new">New Customer</NavLink>
+            </li>
+            <li className="nav-item">
+                <NavLink className="nav-link" aria-current="page" to="sales/">List of Sales</NavLink>
+            </li>
           </ul>
         </div>
       </div>

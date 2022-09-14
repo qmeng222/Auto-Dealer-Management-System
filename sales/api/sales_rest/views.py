@@ -72,10 +72,8 @@ def list_sales(request, salesperson_id=None):
     if request.method == "GET":
         if salesperson_id is not None:
             sales = SalesRecord.objects.filter(sales_person = salesperson_id)
-            print(sales, "line 75")
         else:
             sales = SalesRecord.objects.all()
-            print(sales, "sales up top")
         return JsonResponse(
             {"sales": sales},
             encoder = SalesRecordEncoder,

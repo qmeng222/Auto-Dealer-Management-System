@@ -3,6 +3,8 @@ import MainPage from './MainPage';
 import Nav from './Nav';
 import SalesPersonForm from './sales/SalesPersonForm';
 import CustomerForm from './sales/CustomerForm';
+import SalesList from './sales/SalesList';
+import SalesHistory from './sales/SalesPersonSalesHistory';
 
 function App() {
   return (
@@ -13,6 +15,7 @@ function App() {
           <Route path="/" element={<MainPage />} />
           <Route path="salespersons/new/" element={<SalesPersonForm />} />
           <Route path="customers/new/" element={<CustomerForm />} />
+          <Route path="sales/" element={<SalesList />} />
         </Routes>
       </div>
     </BrowserRouter>
