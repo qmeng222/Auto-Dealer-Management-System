@@ -31,7 +31,6 @@ def poll():
         print('Service poller polling for data')
         try:
             get_automobile()
-            pass
         except Exception as e:
             print(e, file=sys.stderr)
         time.sleep(60)

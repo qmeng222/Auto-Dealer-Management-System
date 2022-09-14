@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 
 
 class AutomobileVO(models.Model):
@@ -15,6 +16,9 @@ class Technician(models.Model):
     # Learn: Automobile Service: Enter a technician
     employee_number = models.CharField(max_length=50, unique=True)
     technician_name = models.CharField(max_length=100)
+
+    def get_api_url(self):
+        return reverse("api_show_technician", kwargs={"pk": self.pk})
 
     def __str__(self):
         return f"{self.id}, {self.technician_name}"
@@ -37,6 +41,8 @@ class Appointment(models.Model):
     canceled = models.BooleanField(default=False)
     finished = models.BooleanField(default=False)
 
+    def get_api_url(self):
+        return reverse("api_show_appointment", kwargs={"pk": self.pk})
 
     def __str__(self):
         return f"{self.vin}, appointment at {self.time} {self.date}"
