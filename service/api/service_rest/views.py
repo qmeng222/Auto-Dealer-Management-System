@@ -8,6 +8,7 @@ from .models import AutomobileVO, Technician, Appointment
 class AutomobileVOEncoder(ModelEncoder):
     model = AutomobileVO
     properties = [
+        "id",
         "vin",
         "year",
         "color"
@@ -17,6 +18,7 @@ class AutomobileVOEncoder(ModelEncoder):
 class TechnicianEncoder(ModelEncoder):
     model = Technician
     properties = [
+        "id",
         "employee_number",
         "technician_name"
     ]
@@ -25,11 +27,12 @@ class TechnicianEncoder(ModelEncoder):
 class AppointmentEncoder(ModelEncoder):
     model = Appointment
     properties = [
+        "id",
         "vin",
         "customer_name",
         "date",
         "time",
-        "technician_name",
+        "technician",
         "reason",
         "vip",
         "canceled",
@@ -40,6 +43,18 @@ class AppointmentEncoder(ModelEncoder):
         "automobile": AutomobileVOEncoder(),
         "technician": TechnicianEncoder(),
     }
+
+    def get_extra_data(self, o):
+        if isinstance(o.date, str) and isinstance(o.time, str):
+            return {
+                "date": o.date,
+                "time": o.time,
+            }
+        else:
+            return {
+                "date": o.date.isoformat(),
+                "time": o.time.isoformat(),
+            }
 
 
 @require_http_methods(["GET", "POST"])
@@ -122,27 +137,44 @@ def api_list_appointments(request):
 
     else:  # "POST"
         content = json.loads(request.body)
+        print("预约内容预约内容:", content)
         try:
-            print("预约详情：", content)
-            vin = content["vin"]
-            customer_name = content["customer_name"]
-            date = content["date"]
-            time = content["time"]
-            # technician_name = content["technician_name"]
-            technician_name = Technician.objects.get(technician_name=content["technician_name"])
-            content["technician_name"]  = technician_name
-            reason = content["reason"]
+            technician = Technician.objects.get(id=content['technician_id'])
+            content['technician'] = technician
             appointment = Appointment.objects.create(**content)
             return JsonResponse(
                 appointment,
                 encoder=AppointmentEncoder,
                 safe=False,
             )
-        except AutomobileVO.DoesNotExist:
+        except Technician.DoesNotExist:
             return JsonResponse(
-                {"message": "could not create the appointment"},
+                {"message": "Invalid technician id"},
                 status=400,
             )
+
+
+        # try:
+        #     print("预约详情：", content)
+        #     vin = content["vin"]
+        #     customer_name = content["customer_name"]
+        #     date = content["date"]
+        #     time = content["time"]
+        #     # technician_name = content["technician_name"]
+        #     technician_name = Technician.objects.get(technician_name=content["technician_name"])
+        #     content["technician_name"]  = technician_name
+        #     reason = content["reason"]
+        #     appointment = Appointment.objects.create(**content)
+        #     return JsonResponse(
+        #         appointment,
+        #         encoder=AppointmentEncoder,
+        #         safe=False,
+        #     )
+        # except AutomobileVO.DoesNotExist:
+        #     return JsonResponse(
+        #         {"message": "could not create the appointment"},
+        #         status=400,
+        #     )
 
 
 @require_http_methods(["GET", "PUT", "DELETE"])
