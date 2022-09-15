@@ -52,7 +52,7 @@ class AppointmentsList extends React.Component {
     const id = event.target.value;
     const finishUrl = `http://localhost:8080/api/appointments/${id}/`;
     const fetchConfig = {
-      method: "PUT",
+      method: "DELETE",
     };
     const response = await fetch(finishUrl, fetchConfig);
     if (response.ok) {
@@ -65,6 +65,7 @@ class AppointmentsList extends React.Component {
       <div>
         <p></p>
         <h2>Service appointments</h2>
+
         <table className="table table-striped">
           <thead>
             <tr>

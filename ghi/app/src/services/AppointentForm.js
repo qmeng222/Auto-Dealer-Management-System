@@ -102,7 +102,7 @@ class AppointmentForm extends React.Component {
             <form onSubmit={this.handleSubmit} id="new-shoe-form">
               <div className="form-floating mb-3">
                 <input
-                  value={this.state.vin}
+                  value={this.state.vin || ""}
                   onChange={this.handleVinChange}
                   placeholder="VIN"
                   required
@@ -115,7 +115,7 @@ class AppointmentForm extends React.Component {
               </div>
               <div className="form-floating mb-3">
                 <input
-                  value={this.state.customer_name}
+                  value={this.state.customer_name || ""}
                   onChange={this.handleNameChange}
                   placeholder="Customer name"
                   required

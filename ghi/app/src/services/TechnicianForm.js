@@ -62,7 +62,7 @@ class TechnicianForm extends React.Component {
               {/* EMPLOYEE NUMBER: */}
               <div className="form-floating mb-3">
                 <input
-                  value={this.state.employee_number}
+                  value={this.state.employee_number || ""}
                   onChange={this.handleNumberChange}
                   placeholder="Employee number"
                   required
@@ -76,7 +76,7 @@ class TechnicianForm extends React.Component {
               {/* TECHNICIAN NAME: */}
               <div className="form-floating mb-3">
                 <input
-                  value={this.state.technician_name}
+                  value={this.state.technician_name || ""}
                   onChange={this.handleNameChange}
                   placeholder="Technician name"
                   required

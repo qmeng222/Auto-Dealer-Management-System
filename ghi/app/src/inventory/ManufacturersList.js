@@ -21,8 +21,9 @@ class ManufacturersList extends React.Component {
     return (
       <div>
         <h2 className="mt-5">
-          <b>Manufacturers List</b>
+          <b>Manufacturers</b>
         </h2>
+
         <table className="table table-striped mt-3">
           <thead>
             <tr>

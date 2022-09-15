@@ -25,7 +25,7 @@ class ModelsList extends React.Component {
     return (
       <div>
         <h2 className="mt-5">
-          <b>Vehicle Models</b>
+          <b>Vehicle models</b>
         </h2>
         <table className="table table-striped">
           <thead>
