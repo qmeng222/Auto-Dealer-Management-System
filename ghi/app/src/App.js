@@ -10,6 +10,7 @@ import VehicleForm from './inventory/VehicleForm';
 // sales:
 import SalesPersonForm from './sales/SalesPersonForm';
 import CustomerForm from './sales/CustomerForm';
+import SalesRecordForm from './sales/SalesRecordForm';
 import SalesList from './sales/SalesList';
 import SalesHistory from './sales/SalesPersonHistory';
 
@@ -25,18 +26,19 @@ function App() {
       <Nav />
       <div className="container">
         <Routes>
+          <Route path="/" element={<MainPage />} />
+          {/* INVENTORY: */}
           <Route path="inventory">
             <Route path="automobiles/" element={<AutomobileForm />} />
             <Route path="manufacturers/" element={<ManufacturerForm />} />
             <Route path="models/" element={<VehicleForm />} />
           </Route>
-          <Route path="/" element={<MainPage />} />
           {/* SALES: */}
           <Route path="salespersons/new/" element={<SalesPersonForm />} />
           <Route path="customers/new/" element={<CustomerForm />} />
           <Route path="sales/" element={<SalesList />} />
           <Route path="salespersons/" element={<SalesHistory />} />
-
+          <Route path="salesrecords/new/" element={<SalesRecordForm />} />
           {/* SERVICES:  */}
           <Route path="/technicians/create" element={<TechnicianForm />} />
           <Route path="/appointments/create" element={<AppointmentForm />} />
