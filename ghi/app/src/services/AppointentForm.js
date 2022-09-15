@@ -6,7 +6,7 @@ class AppointmentForm extends React.Component {
 
     this.state = {
       vin: "",
-      customerName: "",
+      customer_name: "",
       date: "",
       time: "",
       technicians: [],
@@ -57,9 +57,9 @@ class AppointmentForm extends React.Component {
   async handleSubmit(event) {
     event.preventDefault();
     const data = { ...this.state };
-    data.customer_name = data.customerName;
-    delete data.customerName;
-    delete data.technicians;
+    // data.customer_name = data.customer_name;
+    // delete data.customer_name;
+
     const appointmentsUrl = "http://localhost:8080/api/appointments/";
     const fetchConfig = {
       method: "post",
@@ -102,7 +102,7 @@ class AppointmentForm extends React.Component {
             <form onSubmit={this.handleSubmit} id="new-shoe-form">
               <div className="form-floating mb-3">
                 <input
-                  value={this.state.vin || ""}
+                  value={this.state.vin}
                   onChange={this.handleVinChange}
                   placeholder="VIN"
                   required
@@ -115,7 +115,7 @@ class AppointmentForm extends React.Component {
               </div>
               <div className="form-floating mb-3">
                 <input
-                  value={this.state.customer_name || ""}
+                  value={this.state.customer_name}
                   onChange={this.handleNameChange}
                   placeholder="Customer name"
                   required

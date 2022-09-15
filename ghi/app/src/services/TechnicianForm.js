@@ -18,12 +18,12 @@ class TechnicianForm extends React.Component {
   // methods to update the components' state:
   handleNumberChange(event) {
     const value = event.target.value;
-    this.setState({ employee_number: value });
+    this.setState({ employeeNumber: value });
   }
 
   handleNameChange(event) {
     const value = event.target.value;
-    this.setState({ technician_name: value });
+    this.setState({ technicianName: value });
   }
 
   async handleSubmit(event) {
@@ -45,8 +45,8 @@ class TechnicianForm extends React.Component {
     const response = await fetch(techniciansUrl, fetchConfig);
     if (response.ok) {
       const cleared = {
-        employee_number: "",
-        technician_name: "",
+        employeeNumber: "",
+        technicianName: "",
       };
       this.setState(cleared);
     }
@@ -62,7 +62,7 @@ class TechnicianForm extends React.Component {
               {/* EMPLOYEE NUMBER: */}
               <div className="form-floating mb-3">
                 <input
-                  value={this.state.employee_number || ""}
+                  value={this.state.employeeNumber}
                   onChange={this.handleNumberChange}
                   placeholder="Employee number"
                   required
@@ -76,7 +76,7 @@ class TechnicianForm extends React.Component {
               {/* TECHNICIAN NAME: */}
               <div className="form-floating mb-3">
                 <input
-                  value={this.state.technician_name || ""}
+                  value={this.state.technicianName}
                   onChange={this.handleNameChange}
                   placeholder="Technician name"
                   required
