@@ -8,7 +8,6 @@ class AppointmentForm extends React.Component {
       customerName: "",
       date: "",
       time: "",
-      technician: "",
       technicians: [],
       reason: "",
     };
@@ -62,8 +61,6 @@ class AppointmentForm extends React.Component {
     };
     const response = await fetch(appointmentsUrl, fetchConfig);
     if (response.ok) {
-      const newAppointment = await response.json();
-      console.log(newAppointment);
       const cleared = {
         vin: "",
         customer_name: "",
@@ -86,7 +83,7 @@ class AppointmentForm extends React.Component {
   }
 
   render() {
-    console.log(this.state.technicians);
+    // console.log(this.state.technicians);
     return (
       <div className="row">
         <div className="offset-3 col-6">

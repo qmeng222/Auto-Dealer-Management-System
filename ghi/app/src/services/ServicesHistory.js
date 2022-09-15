@@ -11,22 +11,7 @@ class ServiceHistory extends React.Component {
     this.handleSearchChange = this.handleSearchChange.bind(this);
     this.handleSearch = this.handleSearch.bind(this);
   }
-  async loadVins() {
-    const vinResponse = await fetch("http://localhost:8080/api/vins/");
-    if (vinResponse.ok) {
-      const vinData = await vinResponse.json();
-      let vins = [];
-      for (let vin of vinData.vins) {
-        vins.push(vin.vin);
-      }
-      this.setState({ vins: vins });
-    } else {
-      console.error("vinData:", vinResponse);
-    }
-  }
-  async componentDidMount() {
-    this.loadVins();
-  }
+
   handleSearchChange(event) {
     const value = event.target.value;
     this.setState({ search: value.toUpperCase() });
@@ -70,7 +55,7 @@ class ServiceHistory extends React.Component {
           </button>
         </form>
         <p></p>
-        <h2>Service appointment history</h2>
+        <h2>Service appointments</h2>
         <table className="table table-striped">
           <thead>
             <tr>
@@ -84,7 +69,7 @@ class ServiceHistory extends React.Component {
           </thead>
           <tbody>
             {this.state.appointments.map((appt) => {
-              console.log(appt);
+              // console.log(appt);
               return (
                 <tr key={appt.id}>
                   <td>{appt.vin}</td>

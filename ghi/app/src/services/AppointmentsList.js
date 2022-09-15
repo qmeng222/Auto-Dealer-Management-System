@@ -25,22 +25,9 @@ class AppointmentsList extends React.Component {
       console.error("apptData:", apptResponse);
     }
   }
-  async loadVins() {
-    const vinResponse = await fetch("http://localhost:8080/api/vins/");
-    if (vinResponse.ok) {
-      const vinData = await vinResponse.json();
-      let vins = [];
-      for (let vin of vinData.vins) {
-        vins.push(vin.vin);
-      }
-      this.setState({ vins: vins });
-    } else {
-      console.error("vinData:", vinResponse);
-    }
-  }
+
   async componentDidMount() {
     this.loadAppt();
-    this.loadVins();
   }
   async handleCancel(event) {
     event.preventDefault();
