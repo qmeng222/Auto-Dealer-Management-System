@@ -42,7 +42,7 @@ class AutomobileForm extends React.Component {
         const data = {...this.state};
         delete data.vehicleModels
 
-        const url = 'http://localhost:8100/api/models/';
+        const url = 'http://localhost:8100/api/automobiles/';
         const fetchConfig = {
             method: "post",
             body: JSON.stringify(data),
@@ -68,7 +68,7 @@ class AutomobileForm extends React.Component {
         const response = await fetch(url);
         if (response.ok) {
             const data = await response.json();
-            this.setState({ vehicleModels: data.model });
+            this.setState({ vehicleModels: data.models });
         }
     }
 
@@ -96,7 +96,7 @@ class AutomobileForm extends React.Component {
                     <option value="">Choose a Vehicle Model</option>
                     {this.state.vehicleModels.map(model => {
                         return(
-                            <option key={model.id} value={model.id}>{model.model}</option>
+                            <option key={model.id} value={model.id}>{model.name}</option>
                         )
                     })}
                     </select>

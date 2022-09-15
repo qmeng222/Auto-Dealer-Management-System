@@ -6,6 +6,7 @@ class VehicleForm extends React.Component {
         this.state = {
             name:'',
             pictureUrl: '',
+            manufacturer:'',
             manufacturers: [],
         }
 
@@ -34,6 +35,8 @@ class VehicleForm extends React.Component {
         event.preventDefault();
         const data = {...this.state};
         data.picture_url = data.pictureUrl
+        data.manufacturer_id = data.manufacturer
+        delete data.manufacturer
         delete data.pictureUrl
         delete data.manufacturers
 
