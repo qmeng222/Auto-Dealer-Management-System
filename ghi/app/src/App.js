@@ -16,6 +16,7 @@ function App() {
           <Route path="salespersons/new/" element={<SalesPersonForm />} />
           <Route path="customers/new/" element={<CustomerForm />} />
           <Route path="sales/" element={<SalesList />} />
+          <Route path="salespersons/" element={<SalesHistory />} />
         </Routes>
       </div>
     </BrowserRouter>
