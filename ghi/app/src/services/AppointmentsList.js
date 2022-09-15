@@ -10,6 +10,12 @@ class AppointmentsList extends React.Component {
     this.handleCancel = this.handleCancel.bind(this);
     this.handleFinish = this.handleFinish.bind(this);
   }
+
+  async componentDidMount() {
+    this.loadAppt();
+  }
+
+  // ENTRIES:
   async loadAppt() {
     const apptResponse = await fetch("http://localhost:8080/api/appointments/");
     if (apptResponse.ok) {
@@ -26,26 +32,24 @@ class AppointmentsList extends React.Component {
     }
   }
 
-  async componentDidMount() {
-    this.loadAppt();
-  }
+  // CANCEL:
   async handleCancel(event) {
     event.preventDefault();
     const id = event.target.value;
-
-    const finishUrl = `http://localhost:8080/api/appointments/${id}/`;
+    const cancelUrl = `http://localhost:8080/api/appointments/${id}/`;
     const fetchConfig = {
       method: "DELETE",
     };
-    const response = await fetch(finishUrl, fetchConfig);
+    const response = await fetch(cancelUrl, fetchConfig);
     if (response.ok) {
       this.loadAppt();
     }
   }
+
+  // FINISHED:
   async handleFinish(event) {
     event.preventDefault();
     const id = event.target.value;
-
     const finishUrl = `http://localhost:8080/api/appointments/${id}/`;
     const fetchConfig = {
       method: "PUT",
@@ -55,6 +59,7 @@ class AppointmentsList extends React.Component {
       this.loadAppt();
     }
   }
+
   render() {
     return (
       <div>
@@ -116,4 +121,5 @@ class AppointmentsList extends React.Component {
     );
   }
 }
+
 export default AppointmentsList;

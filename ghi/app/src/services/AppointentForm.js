@@ -3,6 +3,7 @@ import React from "react";
 class AppointmentForm extends React.Component {
   constructor(props) {
     super(props);
+
     this.state = {
       vin: "",
       customerName: "",
@@ -11,6 +12,7 @@ class AppointmentForm extends React.Component {
       technicians: [],
       reason: "",
     };
+
     // bind in constructor:
     this.handleVinChange = this.handleVinChange.bind(this);
     this.handleNameChange = this.handleNameChange.bind(this);
@@ -20,31 +22,38 @@ class AppointmentForm extends React.Component {
     this.handleReasonChange = this.handleReasonChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
+
   // methods to update the components' state:
   handleVinChange(event) {
     const value = event.target.value;
     this.setState({ vin: value });
   }
+
   handleNameChange(event) {
     const value = event.target.value;
     this.setState({ customer_name: value });
   }
+
   handleDateChange(event) {
     const value = event.target.value;
     this.setState({ date: value });
   }
+
   handleTimeChange(event) {
     const value = event.target.value;
     this.setState({ time: value });
   }
+
   handleTechChange(event) {
     const value = event.target.value;
     this.setState({ technician: value });
   }
+
   handleReasonChange(event) {
     const value = event.target.value;
     this.setState({ reason: value });
   }
+
   async handleSubmit(event) {
     event.preventDefault();
     const data = { ...this.state };
@@ -72,6 +81,7 @@ class AppointmentForm extends React.Component {
       this.setState(cleared);
     }
   }
+
   // load the technicians dropdown:
   async componentDidMount() {
     const url = "http://localhost:8080/api/technicians/";

@@ -16,6 +16,7 @@ class ServiceHistory extends React.Component {
     const value = event.target.value;
     this.setState({ search: value.toUpperCase() });
   }
+
   async handleSearch(event) {
     event.preventDefault();
     const apptResponse = await fetch("http://localhost:8080/api/appointments/");
@@ -32,6 +33,7 @@ class ServiceHistory extends React.Component {
       console.error("apptData:", apptResponse);
     }
   }
+
   render() {
     return (
       <div>
@@ -94,4 +96,5 @@ class ServiceHistory extends React.Component {
     );
   }
 }
+
 export default ServiceHistory;
