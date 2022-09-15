@@ -1,17 +1,17 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import MainPage from './MainPage';
-import Nav from './Nav';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import MainPage from "./MainPage";
+import Nav from "./Nav";
 
 // inventory:
-import AutomobileForm from './inventory/AutomobileForm';
-import ManufacturerForm from './inventory/ManufacturerForm';
-import VehicleForm from './inventory/VehicleForm';
+import ManufacturersList from "./inventory/ManufacturersList";
+import VehiclemodelsList from "./inventory/VehiclemodelsList";
+import AutomobilesList from "./inventory/AutomobilesList";
 
 // sales:
-import SalesPersonForm from './sales/SalesPersonForm';
-import CustomerForm from './sales/CustomerForm';
-import SalesList from './sales/SalesList';
-import SalesHistory from './sales/SalesPersonHistory';
+import SalesPersonForm from "./sales/SalesPersonForm";
+import CustomerForm from "./sales/CustomerForm";
+import SalesList from "./sales/SalesList";
+import SalesHistory from "./sales/SalesPersonHistory";
 
 // services:
 import TechnicianForm from "./services/TechnicianForm";
@@ -25,12 +25,12 @@ function App() {
       <Nav />
       <div className="container">
         <Routes>
-          <Route path="inventory">
-            <Route path="automobiles/" element={<AutomobileForm />} />
-            <Route path="manufacturers/" element={<ManufacturerForm />} />
-            <Route path="models/" element={<VehicleForm />} />
-          </Route>
           <Route path="/" element={<MainPage />} />
+          {/* INVENTORY: */}
+          <Route path="/manufacturers/list" element={<ManufacturersList />} />
+          <Route path="/vehiclemodels/list" element={<VehiclemodelsList />} />
+          <Route path="/automobiles/list" element={<AutomobilesList />} />
+
           {/* SALES: */}
           <Route path="salespersons/new/" element={<SalesPersonForm />} />
           <Route path="customers/new/" element={<CustomerForm />} />

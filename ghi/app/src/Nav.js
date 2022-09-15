@@ -7,6 +7,7 @@ function Nav() {
         <NavLink className="navbar-brand" to="/">
           CarCar
         </NavLink>
+
         <button
           className="navbar-toggler"
           type="button"
@@ -21,20 +22,7 @@ function Nav() {
 
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-            {/*<li className="nav-item">
-                <NavLink className="nav-link" aria-current="page" to="/salespersons/new">New Salesperson</NavLink>
-            </li>
-            <li className="nav-item">
-                <NavLink className="nav-link" aria-current="page" to="/customers/new">New Customer</NavLink>
-            </li>
-            <li className="nav-item">
-                <NavLink className="nav-link" aria-current="page" to="sales/">List of Sales</NavLink>
-            </li>
-              <NavLink className="nav-link active" aria-current="page" to="/">
-                Home
-              </NavLink>
-            </li> */}
-
+            {/* Inventory dropdown: */}
             <div className="dropdown">
               <a
                 href="/"
@@ -48,6 +36,7 @@ function Nav() {
               >
                 Inventory
               </a>
+
               <div className="dropdown-menu" aria-labelledby="navbarDropdown">
                 <NavLink
                   className="dropdown-item"
@@ -55,46 +44,79 @@ function Nav() {
                   to="/manufacturers/list"
                   exact="true"
                 >
-                  List anufacturers
+                  List manufacturers
                 </NavLink>
+
                 <NavLink
                   className="dropdown-item"
                   aria-selected="true"
-                  to="/manufacturers/create"
-                  exact="true"
-                >
-                  Create manufacturer
-                </NavLink>
-                <NavLink
-                  className="dropdown-item"
-                  aria-selected="true"
-                  to="/models/list"
+                  to="/vehiclemodels/list"
                 >
                   List vehiclemodels
                 </NavLink>
+
                 <NavLink
                   className="dropdown-item"
                   aria-selected="true"
-                  to="/models/create"
+                  to="/automobiles/list"
                 >
-                  Create vehiclemodel
-                </NavLink>
-                <NavLink
-                  className="dropdown-item"
-                  aria-selected="true"
-                  to="/inventory/list"
-                >
-                  List inventory
-                </NavLink>
-                <NavLink
-                  className="dropdown-item"
-                  aria-selected="true"
-                  to="/inventory/create"
-                >
-                  Create inventory
+                  List automobiles
                 </NavLink>
               </div>
             </div>
+
+            {/* Sales dropdown: */}
+            <div className="dropdown">
+              <a
+                href="/"
+                className="nav-link dropdown-toggle"
+                to="#"
+                role="button"
+                id="navbarDropdown"
+                data-bs-toggle="dropdown"
+                aria-haspopup="true"
+                aria-expanded="false"
+              >
+                Sales
+              </a>
+
+              <div className="dropdown-menu" aria-labelledby="navbarDropdown">
+                <NavLink
+                  className="dropdown-item"
+                  aria-selected="true"
+                  to="/manufacturers/list"
+                  exact="true"
+                >
+                  Link 1
+                </NavLink>
+
+                <NavLink
+                  className="dropdown-item"
+                  aria-selected="true"
+                  to="/vehiclemodels/list"
+                >
+                  Link 2
+                </NavLink>
+
+                <NavLink
+                  className="dropdown-item"
+                  aria-selected="true"
+                  to="/automobiles/list"
+                >
+                  Link 3
+                </NavLink>
+
+                <NavLink
+                  className="dropdown-item"
+                  aria-selected="true"
+                  to="/automobiles/list"
+                >
+                  Link 4
+                </NavLink>
+              </div>
+            </div>
+
+            {/* Services dropdown: */}
             <div className="dropdown">
               <a
                 href="/"
@@ -108,6 +130,7 @@ function Nav() {
               >
                 Services
               </a>
+
               <div className="dropdown-menu" aria-labelledby="navbarDropdown">
                 <NavLink
                   className="dropdown-item"
@@ -116,6 +139,7 @@ function Nav() {
                 >
                   Create technician
                 </NavLink>
+
                 <NavLink
                   className="dropdown-item"
                   aria-selected="true"
@@ -123,6 +147,7 @@ function Nav() {
                 >
                   List appointments
                 </NavLink>
+
                 <NavLink
                   className="dropdown-item"
                   aria-selected="true"
@@ -130,12 +155,13 @@ function Nav() {
                 >
                   Create appointment
                 </NavLink>
+
                 <NavLink
                   className="dropdown-item"
                   aria-selected="true"
                   to="/appointments/history"
                 >
-                  Service history
+                  Services history
                 </NavLink>
               </div>
             </div>
