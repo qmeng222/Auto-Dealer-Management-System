@@ -1,5 +1,7 @@
 import React from 'react';
 
+// Creates a SalesPerson
+
 class SalesPersonForm extends React.Component {
     constructor(props) {
         super(props)

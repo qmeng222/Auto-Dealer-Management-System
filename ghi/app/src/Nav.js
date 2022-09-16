@@ -22,7 +22,6 @@ function Nav() {
 
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-            {/* Inventory dropdown: */}
             <div className="dropdown">
               <a
                 href="/"
@@ -50,17 +49,42 @@ function Nav() {
                 <NavLink
                   className="dropdown-item"
                   aria-selected="true"
-                  to="/vehiclemodels/list"
+                  to="/manufacturers/create"
+                  exact="true"
                 >
-                  List vehiclemodels
+                  Create manufacturer
                 </NavLink>
 
                 <NavLink
                   className="dropdown-item"
                   aria-selected="true"
-                  to="/automobiles/list"
+                  to="/vehiclemodels/list"
                 >
-                  List automobiles
+                  List Vehiclemodels
+                </NavLink>
+
+                <NavLink
+                  className="dropdown-item"
+                  aria-selected="true"
+                  to="/vehiclemodels/create"
+                >
+                  Create Vehiclemodel
+                </NavLink>
+
+                <NavLink
+                  className="dropdown-item"
+                  aria-selected="true"
+                  to="/appointments/list"
+                >
+                  List appointments
+                </NavLink>
+
+                <NavLink
+                  className="dropdown-item"
+                  aria-selected="true"
+                  to="/appointments/create"
+                >
+                  Create appointment
                 </NavLink>
               </div>
             </div>
@@ -137,7 +161,7 @@ function Nav() {
                   aria-selected="true"
                   to="/technicians/create"
                 >
-                  Create technician
+                  Create Technician
                 </NavLink>
 
                 <NavLink
@@ -145,7 +169,7 @@ function Nav() {
                   aria-selected="true"
                   to="/appointments/list"
                 >
-                  List appointments
+                  List Appointments
                 </NavLink>
 
                 <NavLink
@@ -153,7 +177,7 @@ function Nav() {
                   aria-selected="true"
                   to="/appointments/create"
                 >
-                  Create appointment
+                  Create Appointment
                 </NavLink>
 
                 <NavLink

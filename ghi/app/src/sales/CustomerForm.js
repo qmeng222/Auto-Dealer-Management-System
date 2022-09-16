@@ -1,5 +1,7 @@
 import React from 'react';
 
+// Creates a customer
+
 class CustomerForm extends React.Component {
     constructor(props) {
         super(props)
@@ -69,7 +71,7 @@ render() {
                     <label htmlFor="name">Name</label>
                 </div>
                 <div className="form-floating mb-3">
-                    <input onChange={this.handleAddressChange} value={this.state.address} placeholder="address" required type="text" name="address" id="address" className="form-control"/>
+                    <input onChange={this.handleAddressChange} value={this.state.address} placeholder="Address" required type="text" name="address" id="address" className="form-control"/>
                     <label htmlFor="address">Address</label>
                 </div>
                 <div className="form-floating mb-3">
