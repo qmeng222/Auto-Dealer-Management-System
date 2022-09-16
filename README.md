@@ -16,7 +16,7 @@
 
 ## Architectures & Features:
 
-![Diagram](/images/projectBetaDiagram.png) 
+![Diagram](/images/projectbetadiagram.png) 
 
 - [x] Inventory:
   - [x] http://localhost:8100/
