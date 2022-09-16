@@ -104,20 +104,21 @@ Note: A sale can only be created if you have created a Customer, Salesperson, an
 
 - [x] Views:
 
-  - [x] encoders:
+  - [x] Encoders:
+
     - [x] AutomobileVOEncoder
     - [x] TechnicianEncoder
     - [x] AppointmentEncoder
 
-- [x] Functions:
+  - [x] Functions:
 
-  - [x] api_list_technicians:
-    - [x] create a technician (use id to target the technician)
-    - [x] list technicians
-  - [x] api_show_technician:
-    - [x] update a technician (use id to target the technician)
-    - [x] show / delete a technician
-  - [x] likewise for the appointment counterparts (api_list_appointments, api_show_appointment)
+    - [x] api_list_technicians:
+      - [x] create a technician (use id to target the technician)
+      - [x] list technicians
+    - [x] api_show_technician:
+      - [x] update a technician (use id to target the technician)
+      - [x] show / delete a technician
+    - [x] likewise for the appointment counterparts (api_list_appointments, api_show_appointment)
 
 - [x] Components:
   - [x] create technician by entering employee number and technician name
