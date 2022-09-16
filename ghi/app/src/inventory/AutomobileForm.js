@@ -41,6 +41,8 @@ class AutomobileForm extends React.Component {
   async handleSubmit(event) {
     event.preventDefault();
     const data = { ...this.state };
+    data.model_id = data.vehicleModel;
+    delete data.vehicleModel;
     delete data.vehicleModels;
 
     const url = "http://localhost:8100/api/automobiles/";
