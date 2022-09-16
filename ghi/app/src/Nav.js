@@ -2,8 +2,16 @@ import { NavLink } from "react-router-dom";
 
 function Nav() {
   return (
-    <nav className="navbar navbar-expand-lg navbar-dark bg-success">
+    <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
       <div className="container-fluid">
+        <a className="navbar-brand" href="/">
+          <img
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRPL0I6PEl7X_v2uCNwUgundrXBcR9eb58ofA&usqp=CAU"
+            height="30"
+            alt=""
+          />
+        </a>
+
         <NavLink className="navbar-brand" to="/">
           CarCar
         </NavLink>

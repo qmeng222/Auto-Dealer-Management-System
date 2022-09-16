@@ -65,7 +65,6 @@ class AppointmentsList extends React.Component {
       <div>
         <p></p>
         <h2>Service appointments</h2>
-
         <table className="table table-striped">
           <thead>
             <tr>
