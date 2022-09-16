@@ -11,8 +11,7 @@
   - [x] Qingying Meng: Automobile Service + Inventory List
   - [x] Carmen Tang: Auto Sales + Inventory Forms
 - [x] RESTful APIs & front-end overview:
-
----
+      ![GIF](images\LsJazlDzWa.gif)
 
 ## Docker commands:
 
