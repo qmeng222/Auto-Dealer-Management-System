@@ -25,7 +25,7 @@ Start project with the following commands in terminal while in the project-beta 
 
 ## Architectures & Features:
 
-![Diagram](images\projectbetadiagram.png)
+![Diagram](/images/projectBetaDiagram.png) 
 
 - [x] Inventory:
   - [x] http://localhost:8100/
