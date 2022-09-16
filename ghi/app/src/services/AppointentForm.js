@@ -9,6 +9,7 @@ class AppointmentForm extends React.Component {
       customer_name: "",
       date: "",
       time: "",
+      technician_id: "",
       technicians: [],
       reason: "",
     };
@@ -46,7 +47,7 @@ class AppointmentForm extends React.Component {
 
   handleTechChange(event) {
     const value = event.target.value;
-    this.setState({ technician: value });
+    this.setState({ technician_id: value });
   }
 
   handleReasonChange(event) {
@@ -57,8 +58,7 @@ class AppointmentForm extends React.Component {
   async handleSubmit(event) {
     event.preventDefault();
     const data = { ...this.state };
-    // data.customer_name = data.customer_name;
-    // delete data.customer_name;
+    delete data.technicians;
 
     const appointmentsUrl = "http://localhost:8080/api/appointments/";
     const fetchConfig = {
@@ -72,7 +72,7 @@ class AppointmentForm extends React.Component {
     if (response.ok) {
       const cleared = {
         vin: "",
-        customer_name: "",
+        customerName: "",
         date: "",
         time: "",
         technician: "",
@@ -93,7 +93,6 @@ class AppointmentForm extends React.Component {
   }
 
   render() {
-    // console.log(this.state.technicians);
     return (
       <div className="row">
         <div className="offset-3 col-6">
@@ -158,7 +157,7 @@ class AppointmentForm extends React.Component {
               </div>
               <div className="mb-3">
                 <select
-                  value={this.state.technician}
+                  value={this.state.technician_id}
                   onChange={this.handleTechChange}
                   required
                   name="technician"
@@ -170,7 +169,7 @@ class AppointmentForm extends React.Component {
                     return (
                       <option
                         key={technician.employee_number}
-                        value={technician.technician_name}
+                        value={technician.id}
                       >
                         {technician.technician_name}
                       </option>
