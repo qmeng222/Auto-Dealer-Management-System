@@ -48,12 +48,30 @@ class SalesRecordForm extends React.Component {
         const salesPersonUrl = 'http://localhost:8090/api/salespersons/'
         const salesPersonResponse = await fetch(salesPersonUrl)
 
-        if (customerResponse.ok && autoResponse.ok && salesPersonResponse.ok) {
-            const autoData = await autoResponse.json()
+        if (customerResponse.ok && salesPersonResponse.ok) {
             const customerData = await customerResponse.json()
             const salesPersonData = await salesPersonResponse.json()
             
-            this.setState({automobiles: autoData.autos})
+            if (autoResponse.ok) {
+                const autoData = await autoResponse.json();
+
+                const salesRecordResponse = await fetch("http://localhost:8090/api/sales/");
+                if (salesRecordResponse.ok) {
+                    const salesRecordData = await salesRecordResponse.json();
+                    const isSold = [];
+                    for (let sold of salesRecordData.sales) {
+                        isSold.push(sold.automobile.vin)
+                    }
+                    const noRecord = [];
+                    for (let unsold of autoData.autos) {
+                        if (!isSold.includes(unsold.vin)) {
+                            noRecord.push(unsold)
+                        }
+                    }
+                    this.setState({automobiles: noRecord})
+                }
+            }
+        
             this.setState({customers: customerData.customers})
             this.setState({salesPersons: salesPersonData.sales_persons})
         }
@@ -105,7 +123,7 @@ class SalesRecordForm extends React.Component {
                     <option value="">Choose An Automobile</option>
                     {this.state.automobiles.map(automobile => {
                             return (
-                                <option key={automobile.vin} value={automobile.vin}>{automobile.model.name}</option>
+                                <option key={automobile.vin} value={automobile.vin}>{automobile.color} - {automobile.model.name} - {automobile.year}</option>
                             );
                         })}
                     </select>

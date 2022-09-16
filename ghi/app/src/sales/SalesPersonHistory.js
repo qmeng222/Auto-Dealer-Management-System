@@ -8,25 +8,18 @@ class SalesHistory extends React.Component {
             salesPersons: [],
             sales: [],
             salesPerson: '',
-            select: '',
         }
         this.handleSalesPersonChange = this.handleSalesPersonChange.bind(this);
-        this.handleSelect = this.handleSelect.bind(this);
     }
 
-    handleSalesPersonChange(event) {
-        const value = event.target.value
-        this.setState({salesPerson:value})
-        }
-
     async componentDidMount() {
-        const url = 'http://localhost:8090/api/sales/';
-        const response = await fetch(url);
+        // const url = 'http://localhost:8090/api/sales/';
+        // const response = await fetch(url);
     
-        if (response.ok) {
-            const data = await response.json();
-            this.setState({ sales: data.sales });
-            }
+        // if (response.ok) {
+        //     const data = await response.json();
+        //     this.setState({ sales: data.sales });
+        //     }
 
         const salesPersonUrl = 'http://localhost:8090/api/salespersons/'
         const salesPersonResponse = await fetch(salesPersonUrl)
@@ -38,20 +31,24 @@ class SalesHistory extends React.Component {
         }
     }
 
-    async handleSelect(event) {
+    async handleSalesPersonChange(event) {
         const value = event.target.value;
-        this.setState({select:value})
+        const salesPersonRecordResponse = await fetch(`http://localhost:8090/api/salesperson/${value}/records/`)
+        if (salesPersonRecordResponse.ok) {
+            const salesPersonRecordData = await salesPersonRecordResponse.json();
+            this.setState({sales: salesPersonRecordData})
+        }
     }
     
     render() {
-        if (this.state.salesPersons === undefined) {
-            return null;
-        }
-        console.log(this.state.salesPersons, "this state sales")
+        
+        console.log(this.state.salesPersons, "salesperson list")
+        console.log(this.state.sales, "list of sales")
+        console.log(this.state.sales.map(sale => sale.id), "this is sales")
         return (
         <>
         <div className="mb-3">
-            <select onChange={this.handleSalesPersonChange} value={this.state.salesPersons} required id="sales_person" name="sales_person" className="form-select">
+            <select onChange={this.handleSalesPersonChange} value={this.state.salesPersons} required id="salesPerson" name="salesPerson" className="form-select">
                 <option value="">Choose a Sales Person</option>
                 {this.state.salesPersons.map(salesPerson => {
                     return (
@@ -60,14 +57,13 @@ class SalesHistory extends React.Component {
                 })}
             </select>
         </div>
-
         <table className="table table-striped">
             <thead>
                 <tr>
                     <th>Sales person</th>
                     <th>Customer</th>
                     <th>VIN</th>
-                    <th>Sale price</th>
+                    <th>Sale Price</th>
                 </tr>
             </thead>
             <tbody>
