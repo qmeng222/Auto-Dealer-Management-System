@@ -11,7 +11,7 @@
   - [x] Qingying Meng: Automobile Service + Inventory List
   - [x] Carmen Tang: Auto Sales + Inventory Forms
 - [x] RESTful APIs & front-end overview:
-      ![GIF](images\LsJazlDzWa.gif)
+      ![GIF](/images/LsJazlDzWa.gif)
 
 ## Docker commands:
 
@@ -25,7 +25,7 @@ Start project with the following commands in terminal while in the project-beta 
 
 ## Architectures & Features:
 
-![Diagram](/images/projectBetaDiagram.png) 
+![Diagram](/images/projectbetadiagram.png) 
 
 - [x] Inventory:
   - [x] http://localhost:8100/
