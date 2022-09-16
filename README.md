@@ -25,7 +25,7 @@ Start project with the following commands in terminal while in the project-beta 
 
 ## Architectures & Features:
 
-![Diagram](/images/projectBetaDiagram.png) 
+![Diagram](/images/projectBetaDiagram.png)
 
 - [x] Inventory:
   - [x] http://localhost:8100/
@@ -105,9 +105,9 @@ Note: A sale can only be created if you have created a Customer, Salesperson, an
 - [x] Views:
 
   - [x] encoders:
-  - [x] AutomobileVOEncoder
-  - [x] TechnicianEncoder
-  - [x] AppointmentEncoder
+    - [x] AutomobileVOEncoder
+    - [x] TechnicianEncoder
+    - [x] AppointmentEncoder
 
 - [x] Functions:
 
