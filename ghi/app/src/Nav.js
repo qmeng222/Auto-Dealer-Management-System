@@ -60,7 +60,7 @@ function Nav() {
                   aria-selected="true"
                   to="/vehiclemodels/list"
                 >
-                  List Vehiclemodels
+                  List vehiclemodels
                 </NavLink>
 
                 <NavLink
@@ -68,7 +68,7 @@ function Nav() {
                   aria-selected="true"
                   to="/vehiclemodels/create"
                 >
-                  Create Vehiclemodel
+                  Create vehiclemodel
                 </NavLink>
 
                 <NavLink
@@ -76,7 +76,7 @@ function Nav() {
                   aria-selected="true"
                   to="/appointments/list"
                 >
-                  List appointments
+                  List automobiles
                 </NavLink>
 
                 <NavLink
@@ -84,7 +84,7 @@ function Nav() {
                   aria-selected="true"
                   to="/appointments/create"
                 >
-                  Create appointment
+                  Create automobile
                 </NavLink>
               </div>
             </div>

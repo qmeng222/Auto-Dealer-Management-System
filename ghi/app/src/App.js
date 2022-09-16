@@ -5,7 +5,7 @@ import Nav from "./Nav";
 // inventory:
 import ManufacturersList from "./inventory/ManufacturersList";
 import ManufacturerForm from "./inventory/ManufacturerForm";
-import VehiclemodelsList from "./inventory/VehiclemodelsList";
+import VehicleModelsList from "./inventory/VehicleModelsList";
 import VehicleModelForm from "./inventory/VehicleModelForm";
 import AutomobilesList from "./inventory/AutomobilesList";
 import AutomobileForm from "./inventory/AutomobileForm";
@@ -33,7 +33,7 @@ function App() {
           {/* INVENTORY: */}
           <Route path="manufacturers/list" element={<ManufacturersList />} />
           <Route path="manufacturers/create" element={<ManufacturerForm />} />
-          <Route path="vehiclemodels/list" element={<VehiclemodelsList />} />
+          <Route path="vehiclemodels/list" element={<VehicleModelsList />} />
           <Route path="vehiclemodels/create" element={<VehicleModelForm />} />
           <Route path="automobiles/list" element={<AutomobilesList />} />
           <Route path="automobiles/create" element={<AutomobileForm />} />
