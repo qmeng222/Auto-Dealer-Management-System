@@ -19,7 +19,7 @@ import SalesHistory from "./sales/SalesPersonHistory";
 
 // services:
 import TechnicianForm from "./services/TechnicianForm";
-import AppointmentForm from "./services/AppointentForm";
+import AppointmentForm from "./services/AppointmentForm";
 import AppointmentsList from "./services/AppointmentsList";
 import ServiceHistory from "./services/ServicesHistory";
 

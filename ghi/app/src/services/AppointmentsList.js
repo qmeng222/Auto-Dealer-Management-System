@@ -11,6 +11,10 @@ class AppointmentsList extends React.Component {
     this.handleFinish = this.handleFinish.bind(this);
   }
 
+  async componentDidMount() {
+    this.loadAppt();
+  }
+
   // ENTRIES:
   async loadAppt() {
     const apptResponse = await fetch("http://localhost:8080/api/appointments/");
@@ -56,16 +60,11 @@ class AppointmentsList extends React.Component {
     }
   }
 
-  async componentDidMount() {
-    this.loadAppt();
-  }
-
   render() {
     return (
       <div>
         <p></p>
         <h2>Service appointments</h2>
-
         <table className="table table-striped">
           <thead>
             <tr>
@@ -80,10 +79,13 @@ class AppointmentsList extends React.Component {
           </thead>
           <tbody>
             {this.state.appointments.map((appt) => {
-              // console.log(appt);
               return (
                 <tr key={appt.id}>
+                  <td>{appt.vin}</td>
                   <td>
+                    {this.state.vins.includes(appt.vin) && (
+                      <p className="text-warning">☆☆{appt.customer_name}☆☆</p>
+                    )}
                     {!this.state.vins.includes(appt.vin) && (
                       <p>{appt.customer_name}</p>
                     )}
