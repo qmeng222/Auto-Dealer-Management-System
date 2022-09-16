@@ -14,6 +14,16 @@
 
 ---
 
+## Docker commands:
+
+Start project with the following commands in terminal while in the project-beta directory:
+
+- docker volume create beta-data
+- docker-compose build
+- docker-compose up
+
+---
+
 ## Architectures & Features:
 
 ![Diagram](images\projectbetadiagram.png)
@@ -33,16 +43,6 @@
 
 ---
 
-## Docker commands:
-
-Start project with the following commands in terminal while in the project-beta directory:
-
-- docker volume create beta-data
-- docker-compose build
-- docker-compose up
-
----
-
 ## Inventory
 
 Inventory has all the data of cars that are available to be sold under their Automobile model.
@@ -55,6 +55,8 @@ Inventory has all the data of cars that are available to be sold under their Aut
 
 Services uses the VIN of the automobile model to create appointments for cars to be worked on.
 Sales uses the VIN of the automobile model to track if a car has been sold or unsold.
+
+---
 
 ## Sales microservice:
 
