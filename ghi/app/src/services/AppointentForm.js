@@ -7,6 +7,7 @@ class AppointmentForm extends React.Component {
     this.state = {
       vin: "",
       customer_name: "",
+      vip: "",
       date: "",
       time: "",
       technician_id: "",
@@ -17,6 +18,7 @@ class AppointmentForm extends React.Component {
     // bind in constructor:
     this.handleVinChange = this.handleVinChange.bind(this);
     this.handleNameChange = this.handleNameChange.bind(this);
+    this.handleVipStatus = this.handleVipStatus.bind(this);
     this.handleDateChange = this.handleDateChange.bind(this);
     this.handleTimeChange = this.handleTimeChange.bind(this);
     this.handleTechChange = this.handleTechChange.bind(this);
@@ -33,6 +35,11 @@ class AppointmentForm extends React.Component {
   handleNameChange(event) {
     const value = event.target.value;
     this.setState({ customer_name: value });
+  }
+
+  handleVipStatus(event) {
+    const value = event.target.value;
+    this.setState({ vip: value });
   }
 
   handleDateChange(event) {
@@ -73,6 +80,7 @@ class AppointmentForm extends React.Component {
       const cleared = {
         vin: "",
         customerName: "",
+        vip: "",
         date: "",
         time: "",
         technician: "",
@@ -124,6 +132,23 @@ class AppointmentForm extends React.Component {
                   className="form-control"
                 />
                 <label htmlFor="customer_name">Customer name</label>
+              </div>
+              <div className="form-floating mb-3">
+                <select
+                  onChange={this.handleVipStatus}
+                  value={this.state.vip}
+                  placeholder="VIP"
+                  required
+                  type="text"
+                  name="vip"
+                  id="vip"
+                  className="form-select"
+                >
+                  <option value="True">Yes</option>
+                  <option value="False">No</option>
+                </select>
+
+                <label htmlFor="vip">VIP service</label>
               </div>
               <div
                 className="form-floating mb-3"
