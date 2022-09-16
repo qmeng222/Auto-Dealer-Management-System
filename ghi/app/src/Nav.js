@@ -40,7 +40,7 @@ function Nav() {
                 <NavLink
                   className="dropdown-item"
                   aria-selected="true"
-                  to="/manufacturers/list"
+                  to="manufacturers/list"
                   exact="true"
                 >
                   List manufacturers
@@ -49,7 +49,7 @@ function Nav() {
                 <NavLink
                   className="dropdown-item"
                   aria-selected="true"
-                  to="/manufacturers/create"
+                  to="manufacturers/create"
                   exact="true"
                 >
                   Create manufacturer
@@ -58,7 +58,7 @@ function Nav() {
                 <NavLink
                   className="dropdown-item"
                   aria-selected="true"
-                  to="/vehiclemodels/list"
+                  to="vehiclemodels/list"
                 >
                   List vehiclemodels
                 </NavLink>
@@ -66,7 +66,7 @@ function Nav() {
                 <NavLink
                   className="dropdown-item"
                   aria-selected="true"
-                  to="/vehiclemodels/create"
+                  to="vehiclemodels/create"
                 >
                   Create vehiclemodel
                 </NavLink>
@@ -74,7 +74,7 @@ function Nav() {
                 <NavLink
                   className="dropdown-item"
                   aria-selected="true"
-                  to="/appointments/list"
+                  to="automobiles/list"
                 >
                   List automobiles
                 </NavLink>
@@ -82,7 +82,7 @@ function Nav() {
                 <NavLink
                   className="dropdown-item"
                   aria-selected="true"
-                  to="/appointments/create"
+                  to="automobiles/create"
                 >
                   Create automobile
                 </NavLink>
@@ -108,34 +108,42 @@ function Nav() {
                 <NavLink
                   className="dropdown-item"
                   aria-selected="true"
-                  to="/manufacturers/list"
+                  to="sales/"
                   exact="true"
                 >
-                  Link 1
+                  List all sales
                 </NavLink>
 
                 <NavLink
                   className="dropdown-item"
                   aria-selected="true"
-                  to="/vehiclemodels/list"
+                  to="salespersons"
                 >
-                  Link 2
+                  List a salesperson's sales
                 </NavLink>
 
                 <NavLink
                   className="dropdown-item"
                   aria-selected="true"
-                  to="/automobiles/list"
+                  to="salespersons/create"
                 >
-                  Link 3
+                  Create salesperson
                 </NavLink>
 
                 <NavLink
                   className="dropdown-item"
                   aria-selected="true"
-                  to="/automobiles/list"
+                  to="customers/create"
                 >
-                  Link 4
+                  Create customer
+                </NavLink>
+
+                <NavLink
+                  className="dropdown-item"
+                  aria-selected="true"
+                  to="salesrecords/create"
+                >
+                  Create a sale
                 </NavLink>
               </div>
             </div>
