@@ -27,7 +27,7 @@
   - [x] Django: http://localhost:8090/admin/
 - [x] Services:
   - [x] http://localhost:8080/
-  - [x] this bounded context xxxxxxxx
+  - [x] this bounded context keep track of service appointments for automobiles and their owners
   - [x] Django: http://localhost:8080/admin/
 - [x] front-end: http://localhost:3000/
 
@@ -44,6 +44,8 @@ Start project with the following commands in terminal while in the project-beta 
 ---
 
 ## Inventory
+
+- [x] user can create
 
 ## Sales microservice:
 
