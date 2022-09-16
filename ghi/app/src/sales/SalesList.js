@@ -1,5 +1,6 @@
 import React from 'react';
 
+// Looks at List of All sales
 
 class SalesList extends React.Component {
     constructor(props) {

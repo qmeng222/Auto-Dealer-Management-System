@@ -8,7 +8,7 @@ import json
 
 # Create your views here.
 
-
+# Lists Sales People 
 @require_http_methods(["GET", "POST"])
 def list_sales_persons(request):
     if request.method == "GET":
@@ -17,7 +17,7 @@ def list_sales_persons(request):
             {"sales_persons": sales_persons},
             encoder = SalesPersonEncoder
         )
-    else:
+    else: # Creates a Sales Person
         content = json.loads(request.body)
         sales_persons = SalesPerson.objects.create(**content)
         return JsonResponse(
@@ -26,7 +26,7 @@ def list_sales_persons(request):
             safe = False,
         )
 
-
+# Shows a single Sales Person
 @require_http_methods(["GET"])
 def show_salesperson(request, pk):
     if request.method == "GET":
@@ -37,7 +37,7 @@ def show_salesperson(request, pk):
             safe = False,
         )
 
-
+# Lists all customers
 @require_http_methods(["GET", "POST"])
 def list_customers(request):
     if request.method == "GET":
@@ -46,7 +46,7 @@ def list_customers(request):
             {"customers": customers},
             encoder = CustomerEncoder,
         )
-    else:
+    else: # Creates a customer
         content = json.loads(request.body)
         customers = Customer.objects.create(**content)
         return JsonResponse(
@@ -55,7 +55,7 @@ def list_customers(request):
             safe = False,
         )
 
-
+# Shows a single customer
 @require_http_methods(["GET"])
 def show_customer(request, pk):
     if request.method == "GET":
@@ -66,7 +66,7 @@ def show_customer(request, pk):
             safe = False
         )
 
-
+# List all sales
 @require_http_methods(["GET", "POST"])
 def list_sales(request, salesperson_id=None):
     if request.method == "GET":
@@ -79,7 +79,7 @@ def list_sales(request, salesperson_id=None):
             encoder = SalesRecordEncoder,
         )
     else:
-        try:
+        try: # Creates a sale
             content = json.loads(request.body)
 
             # vin_check = content["automobile"]
@@ -106,7 +106,7 @@ def list_sales(request, salesperson_id=None):
                 status=400,
             )
 
-
+# Shows one sale
 @require_http_methods(["GET"])
 def show_sale(request, pk):
     if request.method == "GET":

@@ -1,5 +1,7 @@
 import React from 'react';
 
+// Creates a Sale Record
+
 class SalesRecordForm extends React.Component {
     constructor(props) {
         super(props)
@@ -109,7 +111,6 @@ class SalesRecordForm extends React.Component {
             this.setState(cleared);
         }
     }
-
 
     render() {        
         return (

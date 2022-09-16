@@ -1,5 +1,6 @@
 import React from 'react';
 
+// Creates a manufacturer
 class ManufacturerForm extends React.Component {
     constructor(props) {
         super(props)

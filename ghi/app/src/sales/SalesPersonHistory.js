@@ -1,5 +1,6 @@
 import React from 'react';
 
+// Looks at a Sales Person's sale history
 
 class SalesHistory extends React.Component {
     constructor(props) {
@@ -13,14 +14,6 @@ class SalesHistory extends React.Component {
     }
 
     async componentDidMount() {
-        // const url = 'http://localhost:8090/api/sales/';
-        // const response = await fetch(url);
-    
-        // if (response.ok) {
-        //     const data = await response.json();
-        //     this.setState({ sales: data.sales });
-        //     }
-
         const salesPersonUrl = 'http://localhost:8090/api/salespersons/'
         const salesPersonResponse = await fetch(salesPersonUrl)
 
@@ -36,15 +29,11 @@ class SalesHistory extends React.Component {
         const salesPersonRecordResponse = await fetch(`http://localhost:8090/api/salesperson/${value}/records/`)
         if (salesPersonRecordResponse.ok) {
             const salesPersonRecordData = await salesPersonRecordResponse.json();
-            this.setState({sales: salesPersonRecordData})
+            this.setState({sales: salesPersonRecordData.sales})
         }
     }
     
     render() {
-        
-        console.log(this.state.salesPersons, "salesperson list")
-        console.log(this.state.sales, "list of sales")
-        console.log(this.state.sales.map(sale => sale.id), "this is sales")
         return (
         <>
         <div className="mb-3">
@@ -83,7 +72,6 @@ class SalesHistory extends React.Component {
         )
     }
 }
-
 
 
 export default SalesHistory

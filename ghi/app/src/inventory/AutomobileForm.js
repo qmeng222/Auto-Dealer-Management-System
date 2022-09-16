@@ -1,5 +1,6 @@
 import React from 'react';
 
+// Creates an automobile
 class AutomobileForm extends React.Component {
     constructor(props) {
         super(props)
