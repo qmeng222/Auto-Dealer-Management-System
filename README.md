@@ -11,6 +11,15 @@
   - [x] Qingying Meng: Automobile Service + Inventory List
   - [x] Carmen Tang: Auto Sales + Inventory Forms
 - [x] RESTful APIs & front-end overview:
+      ![GIF](/images/LsJazlDzWa.gif)
+
+## Docker commands:
+
+Start project with the following commands in terminal while in the project-beta directory:
+
+- docker volume create beta-data
+- docker-compose build
+- docker-compose up
 
 ---
 
@@ -33,16 +42,6 @@
 
 ---
 
-## Docker commands:
-
-Start project with the following commands in terminal while in the project-beta directory:
-
-- docker volume create beta-data
-- docker-compose build
-- docker-compose up
-
----
-
 ## Inventory
 
 Inventory has all the data of cars that are available to be sold under their Automobile model.
@@ -55,6 +54,8 @@ Inventory has all the data of cars that are available to be sold under their Aut
 
 Services uses the VIN of the automobile model to create appointments for cars to be worked on.
 Sales uses the VIN of the automobile model to track if a car has been sold or unsold.
+
+---
 
 ## Sales microservice:
 
@@ -103,20 +104,21 @@ Note: A sale can only be created if you have created a Customer, Salesperson, an
 
 - [x] Views:
 
-  - [x] encoders:
-  - [x] AutomobileVOEncoder
-  - [x] TechnicianEncoder
-  - [x] AppointmentEncoder
+  - [x] Encoders:
 
-- [x] Functions:
+    - [x] AutomobileVOEncoder
+    - [x] TechnicianEncoder
+    - [x] AppointmentEncoder
 
-  - [x] api_list_technicians:
-    - [x] create a technician (use id to target the technician)
-    - [x] list technicians
-  - [x] api_show_technician:
-    - [x] update a technician (use id to target the technician)
-    - [x] show / delete a technician
-  - [x] likewise for the appointment counterparts (api_list_appointments, api_show_appointment)
+  - [x] Functions:
+
+    - [x] api_list_technicians:
+      - [x] create a technician (use id to target the technician)
+      - [x] list technicians
+    - [x] api_show_technician:
+      - [x] update a technician (use id to target the technician)
+      - [x] show / delete a technician
+    - [x] likewise for the appointment counterparts (api_list_appointments, api_show_appointment)
 
 - [x] Components:
   - [x] create technician by entering employee number and technician name
