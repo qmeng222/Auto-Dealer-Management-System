@@ -1,7 +1,7 @@
 ## General Info:
 
 - [x] Project name: CarCar (dealership management software)
-- [x] Time: 9/12/2022 - 9/15/2022
+- [x] Time: 9/12/2022 - 9/17/2022
 - [x] Url: https://gitlab.com/kanpii/project-beta.git
 - [x] Purposes:
   - [x] demonstrate ability to use Django to create RESTful APIs in microservices
@@ -25,7 +25,7 @@ Start project with the following commands in terminal while in the project-beta 
 
 ## Architectures & Features:
 
-![Diagram](/images/projectbetadiagram.png) 
+![Diagram](/images/projectbetadiagram.png)
 
 - [x] Inventory:
   - [x] http://localhost:8100/
